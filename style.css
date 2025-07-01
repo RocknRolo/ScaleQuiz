@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #222;
+}
+
+#header {
+    color: white;
+    font-size: 4rem;
+    text-align: center;
+}
+
+#question_text, #scale_name {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+}
+
+#scale_name {
+    color: lightblue;
+    font-size: 3rem;
+}
+
+#scale_input {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    height: 80%;
+}
+
+#root {
+    width: 120px;
+}
+
+.naturals {
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+.flatsharp_options {
+    background-color: #333;
+    color: white;
+    font-size: 1.5rem;
+    border: none;
+    margin-right: 20px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;    
+}
+
+button {
+    align-items: flex-start;
+
+    background: #1E1E1E;
+    color: lightgrey;
+    width: 120px;
+    height: 60px;
+    border: 1;
+    border-color: black;
+}
+
+#scoreboard {
+    display: flex;
+    color: white;
+    font-size: 2rem;
+}
+
+#score_label {
+    margin: 10px;
+    color: green;
+}
+
+#score {
+    margin: 10px;
+}
+
+#mistakes_label {
+    margin: 10px;
+    color: red;
+}
+
+#mistakes {
+    margin: 10px;
+}
+
+#cheatsheet {
+    font-family: monospace;
+    font-size: 1.5rem;
+    color: lightgrey;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    color: gray;
+}
+
+a:visited {
+    color: gray;
+}
+
+a:hover {
+    color: yellow;
+}

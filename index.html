@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ScaleQuiz</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div id="header">ScaleQuiz</div>
+    <br>
+    <div id="question_text">Define the tones in the following scale: </div>
+    <div id="scale_name"></div>
+    <br>
+    <div id="scale_input">
+        <div class="naturals" id="root"></div>
+        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp2" autofocus></select>
+        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp3"></select>
+        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp4"></select>
+        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp5"></select>
+        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp6"></select>
+        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp7"></select>
+    </div>
+    <br>
+    <div class="bottom">
+        <br>
+        <button onclick="checkAnswer()">Submit<br><small>(Enter)</small></button>
+        <br>
+        <div id="scoreboard">
+            <div id="score_label">Score:</div>
+            <div id="score">0</div>
+            <div id="mistakes_label">Mistakes:</div>
+            <div id="mistakes">0</div>
+        </div>
+<!-- Had to forego indentation here.. -->
+<pre id="cheatsheet">
+ionian     = 1  2  3  4  5  6  7
+dorian     = 1  2 b3  4  5  6 b7
+phrygian   = 1 b2 b3  4  5 b6 b7
+lydian     = 1  2  3 #4  5  6  7
+mixolydian = 1  2  3  4  5  6 b7
+aeolian    = 1  2 b3  4  5 b6 b7
+locrian    = 1 b2 b3  4 b5 b6 b7
+
+Use TAB / SHIFT+TAB + arrow keys
+      for easy navigation.
+</pre>
+    </div>
+    <br>
+    <a href="https://rocknrolo.github.io/">RocknRolo</a>
+</body>
+</html>
