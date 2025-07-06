@@ -1,39 +1,42 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     background-color: #222;
+    display: flex;
+    flex-direction: column;
 }
 
 #header {
     color: white;
-    font-size: 4rem;
+    font-size: 3.5rem;
     text-align: center;
+    margin-bottom: 20px;
 }
 
-#question_text, #scale_name {
+#question_text {
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
 #scale_name {
     color: lightblue;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 #scale_input {
     display: inline-flex;
     justify-content: center;
     width: 100%;
-    height: 80%;
+    margin-bottom: 20px;
+}
+
+.interval_name {
+    color: white;
 }
 
 #root {
-    width: 120px;
+    margin-right: 70px;
 }
 
 .naturals {
@@ -51,64 +54,113 @@ body {
     margin-right: 20px;
 }
 
-.bottom {
+#submit_button {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;    
+    margin-bottom: 20px;
 }
-
 button {
-    align-items: flex-start;
-
     background: #1E1E1E;
     color: lightgrey;
-    width: 120px;
-    height: 60px;
+    width: 100px;
+    height: 50px;
     border: 1;
     border-color: black;
 }
 
 #scoreboard {
     display: flex;
+    justify-content: center;
     color: white;
     font-size: 2rem;
+    margin-bottom: 20px;
 }
 
-#score_label {
+#right_label {
     margin: 10px;
     color: green;
 }
 
-#score {
+#right {
     margin: 10px;
 }
 
-#mistakes_label {
+#wrong_label {
     margin: 10px;
     color: red;
 }
 
-#mistakes {
+#wrong {
     margin: 10px;
 }
 
-#cheatsheet {
-    font-family: monospace;
-    font-size: 1.5rem;
-    color: lightgrey;
+#cheatsheet_parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-a {
+#cheatsheet, #advice, #cheatsheet_checkbox_label, #menu_checkbox_label {
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: grey;
+    margin: 0;
+}
+
+#menu_parent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#menu {
+    display: grid;
+    grid-template-columns: 60px;
+}
+
+.menu_labels {
+    color: lightblue;
+    font-size: 1rem;
+    font-family: monospace;
+}
+
+#key_list, #mode_list {
+    border-style: dotted;
+    border-width: 1px;
+    border-color: grey;
+    padding: 5px;
+}
+
+#key_list {
+    display: grid;
+    grid-column: 1;
+
+}
+
+#mode_list {
+    display: grid;
+    grid-column: 2;
+}
+
+#advice {
     display: flex;
     justify-content: center;
-    color: gray;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+a {    
+    display: flex;
+    justify-content: center;
+    color: yellow;
 }
 
 a:visited {
-    color: gray;
+    color: yellow;
 }
 
 a:hover {
-    color: yellow;
+    color: lightblue;
 }

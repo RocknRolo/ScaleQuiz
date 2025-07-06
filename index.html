@@ -8,33 +8,64 @@
 </head>
 <body>
     <div id="header">ScaleQuiz</div>
-    <br>
+    
     <div id="question_text">Define the tones in the following scale:</div>
     <div id="scale_name"></div>
-    <br>
+    
     <div id="scale_input">
-        <div class="naturals" id="root"></div>
-        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp2" autofocus></select>
-        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp3"></select>
-        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp4"></select>
-        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp5"></select>
-        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp6"></select>
-        <label class="naturals"></label><select class="flatsharp_options" id="flatsharp7"></select>
-    </div>
-    <br>
-    <div class="bottom">
-        <br>
-        <button onclick="checkAnswer()">Submit</button>
-        <br>
-        <div id="scoreboard">
-            <div id="score_label">Score:</div>
-            <div id="score">0</div>
-            <div id="mistakes_label">Mistakes:</div>
-            <div id="mistakes">0</div>
+        <div id="root">
+            <div class="interval_name">1st:</div>
+            <label class="naturals"></label>
         </div>
+        <div>
+            <div class="interval_name">2nd:</div>
+            <label class="naturals"></label>
+            <select class="flatsharp_options" autofocus></select>
+        </div>
+        <div>
+            <div class="interval_name">3rd:</div>
+            <label class="naturals"></label>
+            <select class="flatsharp_options"></select>
+        </div>
+        <div>
+            <div class="interval_name">4th:</div>
+            <label class="naturals"></label>
+            <select class="flatsharp_options"></select>
+        </div>
+        <div>
+            <div class="interval_name">5th:</div>
+            <label class="naturals"></label>
+            <select class="flatsharp_options"></select>
+        </div>
+        <div>
+            <div class="interval_name">6th:</div>
+            <label class="naturals"></label>
+            <select class="flatsharp_options"></select>
+        </div>
+        <div>
+            <div class="interval_name">7th:</div>
+            <label class="naturals"></label>
+            <select class="flatsharp_options"></select>
+        </div>
+    </div>
+    
+    <div id="submit_button">
+        <button onclick="checkAnswer()">Submit</button>
+    </div>
+
+    <div id="scoreboard">
+        <div id="right_label">Right:</div>
+        <div id="right">0</div>
+        <div id="wrong_label">Wrong:</div>
+        <div id="wrong">0</div>
+    </div>
+    
+    <div id="cheatsheet_parent">
+        <label id="cheatsheet_checkbox_label">Cheat sheet
+            <input type="checkbox" id="cheatsheet_checkbox" onclick="checkCB('cheatsheet','cheatsheet_checkbox')" unchecked>
+        </label>
 <!-- I had to forego indentation here.. -->
 <pre id="cheatsheet">
-          cheat sheet:          
 ionian     = 1  2  3  4  5  6  7
 dorian     = 1  2 b3  4  5  6 b7
 phrygian   = 1 b2 b3  4  5 b6 b7
@@ -42,12 +73,82 @@ lydian     = 1  2  3 #4  5  6  7
 mixolydian = 1  2  3  4  5  6 b7
 aeolian    = 1  2 b3  4  5 b6 b7
 locrian    = 1 b2 b3  4 b5 b6 b7
-                                
-Use (shift+)tab & arrow keys for
-        easy navigation.        
 </pre>
+        </div>
+        
+    <div id="menu_parent">
+        <label id="menu_checkbox_label">Menu
+            <input type="checkbox" id="menu_checkbox" onclick="checkCB('menu','menu_checkbox')">
+        </label>
+        <div id="menu">
+            <div id="key_list" onclick="reset()">
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="C" value="0">C
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="Db" value="-1">Db
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="D" value="0">D
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="Eb" value="-1">Eb
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="E" value="0">E
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="F" value="0">F
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="F#" value="1">F#
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="G" value="0">G
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="Ab" value="-1">Ab
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="A" value="0">A
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="Bb" value="-1">Bb
+                </label>
+                <label class="menu_labels">
+                    <input type="checkbox" autocomplete="off" checked class="key_cb" id="B" value="0">B
+                </label>
+            </div>
+            <div id="mode_list" onclick="reset()">
+                <label class="menu_labels" id="ionian">
+                    <input type="checkbox" autocomplete="off" checked value=1 class="mode_cb"></input>Ionian
+                </label>
+                <label class="menu_labels" id="dorian">
+                    <input type="checkbox" autocomplete="off" checked value=2 class="mode_cb"></input>Dorian
+                </label>
+                <label class="menu_labels" id="phrygian">
+                    <input type="checkbox" autocomplete="off" checked value=3 class="mode_cb"></input>Phrygian
+                </label>
+                <label class="menu_labels" id="lydian">
+                    <input type="checkbox" autocomplete="off" checked value=4 class="mode_cb"></input>Lydian
+                </label>
+                <label class="menu_labels" id="mixolydian">
+                    <input type="checkbox" autocomplete="off" checked value=5 class="mode_cb"></input>Mixolydian
+                </label>
+                <label class="menu_labels" id="aeolian">
+                    <input type="checkbox" autocomplete="off" checked value=6 class="mode_cb"></input>Aeolian
+                </label>
+                <label class="menu_labels" id="locrian">
+                    <input type="checkbox" autocomplete="off" checked value=7 class="mode_cb"></input>Locrian
+                </label>
+            </div>
+        </div>
     </div>
-    <br>
+<pre id="advice">
+  Use (shift+)tab & arrow keys  
+      for easy navigation.      
+</pre>
+
     <a href="https://rocknrolo.github.io/">RocknRolo</a>
 </body>
 </html>

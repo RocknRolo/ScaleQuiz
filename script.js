@@ -3,6 +3,10 @@
 const options = document.getElementsByClassName("flatsharp_options");
 const scaleNaturals = document.getElementsByClassName("naturals");
 const scaleName = document.getElementById('scale_name');
+const keyCBs = document.getElementsByClassName('key_cb');
+const modeCBs = document.getElementsByClassName('mode_cb');
+const rightEl = document.getElementById('right');
+const wrongEl = document.getElementById('wrong');
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // This part of the code deals with calculating scales and defining Tone and Scale objects.
@@ -90,35 +94,42 @@ function Scale(root, mode) {
 
 let qTones = [];
 function populateQTones() {
-    qTones = [
-        new Tone("C",0),
-        new Tone("D",-1),
-        new Tone("D",0),
-        new Tone("E",-1),
-        new Tone("E",0),
-        new Tone("F",0),
-        new Tone("F",1),
-        new Tone("G",0),
-        new Tone("A",-1),
-        new Tone("A",0),
-        new Tone("B",-1),
-        new Tone("B",0)
-    ]
+    qTones = [];
+    for (let i = 0; i < keyCBs.length; i++) {
+        if (keyCBs[i].checked) {
+            natural = keyCBs[i].id[0];
+            flatSharp = keyCBs[i].value;
+            qTones.push(new Tone(natural, flatSharp))
+        }
+    }
+    if (qTones.length < 1) {
+        keyCBs[0].checked = true;
+        qTones.push(new Tone("C", 0));
+    }
     shuffle(qTones);
 }
 
 let qModes = [];
 function populateQModes() {
-    qModes = [1,2,3,4,5,6,7]
+    qModes = [];
+    for (let i = 0; i < modeCBs.length; i++) {
+        if (modeCBs[i].checked) {
+            qModes.push(modeCBs[i].value);
+        }
+    }
+    if (qModes.length < 1) {
+        modeCBs[0].checked = true;
+        qModes.push(1)
+    }
     shuffle(qModes);
 }
 
 function shuffle(array) {
-    let currentIndex = array.length;
-    while (currentIndex != 0) {
-        let randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex--;
-        [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 }
 
@@ -147,20 +158,19 @@ function question() {
 
 question();
 
-let score = 0;
-let mistakes = 0;
+let right = 0;
+let wrong = 0;
 
 function checkAnswer() {
     if (allCorrect()) {
-        score++;
+        right++;
         question();
     } else {
-        mistakes++;
-        score--;
+        wrong++;
     }
 
-    document.getElementById('score').textContent = score;
-    document.getElementById('mistakes').textContent = mistakes;
+    rightEl.textContent = right;
+    wrongEl.textContent = wrong;
     options[0].focus();
 }
 
@@ -175,8 +185,20 @@ function allCorrect() {
     return result;
 }
 
+function reset() {
+    qTones = [];
+    qModes = [];
+
+    right = 0;
+    wrong = 0;
+
+    rightEl.textContent = right;
+    wrongEl.textContent = wrong;
+    question();
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// This part of the code handles populating and refreshing the HTML page.
+// This part of the code handles the HTML page.
 for (let i = 0; i < options.length; i++) {
     options[i].innerHTML = 
         `<option value = 2>##</option>
@@ -185,3 +207,28 @@ for (let i = 0; i < options.length; i++) {
         <option value = -1>b</option>
         <option value = -2>bb</option>`
 }
+
+function checkCB(elementStr, checkboxStr) {
+    let el = document.getElementById(elementStr);
+    let cb = document.getElementById(checkboxStr);
+    if (cb.checked) {
+        el.style.visibility = "visible";
+        el.style.display = "grid";
+        el.hidden = false;
+    } else {
+        el.style.visibility = "hidden";
+        el.style.display = "none";
+        el.hidden = true;
+    }
+}
+
+document.getElementById("cheatsheet_checkbox").checked = false
+document.getElementById("menu_checkbox").checked = false
+checkCB('cheatsheet','cheatsheet_checkbox')
+checkCB('menu','menu_checkbox')
+
+/*
+ToDo:
+- Fix CSS so the menu does not take space when collapsed.
+- Fix CSS so Ionian is next to C, Dorian is next to D, etc.
+*/
