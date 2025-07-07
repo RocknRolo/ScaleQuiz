@@ -1,4 +1,4 @@
-// Author: Roel Kemp (RocknRolo)
+// Author: Roel Kemp (RocknRolo). Special thanks to NismoRack for suggesting using a table to get the menu properly aligned!!
 
 const options = document.getElementsByClassName("flatsharp_options");
 const scaleNaturals = document.getElementsByClassName("naturals");
@@ -226,9 +226,3 @@ document.getElementById("cheatsheet_checkbox").checked = false
 document.getElementById("menu_checkbox").checked = false
 checkCB('cheatsheet','cheatsheet_checkbox')
 checkCB('menu','menu_checkbox')
-
-/*
-ToDo:
-- Fix CSS so the menu does not take space when collapsed.
-- Fix CSS so Ionian is next to C, Dorian is next to D, etc.
-*/

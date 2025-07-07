@@ -36,7 +36,7 @@ body {
 }
 
 #root {
-    margin-right: 70px;
+    margin-right: 3.33%;
 }
 
 .naturals {
@@ -109,6 +109,10 @@ button {
     margin: 0;
 }
 
+#cheatsheet {
+    margin-top: 10px;
+}
+
 #menu_parent {
     display: flex;
     flex-direction: column;
@@ -116,32 +120,14 @@ button {
 }
 
 #menu {
-    display: grid;
-    grid-template-columns: 60px;
+    margin-top: 10px;
+    margin-left: 4.44%;
 }
 
 .menu_labels {
     color: lightblue;
     font-size: 1rem;
     font-family: monospace;
-}
-
-#key_list, #mode_list {
-    border-style: dotted;
-    border-width: 1px;
-    border-color: grey;
-    padding: 5px;
-}
-
-#key_list {
-    display: grid;
-    grid-column: 1;
-
-}
-
-#mode_list {
-    display: grid;
-    grid-column: 2;
 }
 
 #advice {
