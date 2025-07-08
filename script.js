@@ -153,6 +153,7 @@ function question() {
     scaleNaturals[0].textContent = scale.tones[0].toString();
     for (let i = 1; i < scaleNaturals.length; i++) {
         scaleNaturals[i].textContent = scale.tones[i].natural;
+        options[i-1].value = '0';
     }
 }
 
@@ -175,14 +176,12 @@ function checkAnswer() {
 }
 
 function allCorrect() {
-    result = true;
     for (let i = 0; i < options.length; i++) {
         if (parseInt(options[i].value) != scale.tones[i+1].flatSharp) {
-            result = false;
+            return false;
         }
-        options[i].value = '0';
     }
-    return result;
+    return true;
 }
 
 function reset() {
