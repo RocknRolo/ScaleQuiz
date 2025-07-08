@@ -222,6 +222,22 @@ function checkCB(elementStr, checkboxStr) {
     }
 }
 
+let allKeysChecked = true;
+function toggleAllKeys() {
+    for (let i = 0; i < keyCBs.length; i++) {
+        keyCBs[i].checked = !allKeysChecked;
+    }
+    allKeysChecked = !allKeysChecked;
+}
+
+let allModesChecked = true;
+function toggleAllModes() {
+    for (let i = 0; i < modeCBs.length; i++) {
+        modeCBs[i].checked = !allModesChecked;
+    }
+    allModesChecked = !allModesChecked;
+}
+
 document.getElementById("cheatsheet_checkbox").checked = false
 document.getElementById("menu_checkbox").checked = false
 checkCB('cheatsheet','cheatsheet_checkbox')

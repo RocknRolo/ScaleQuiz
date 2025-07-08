@@ -64,7 +64,7 @@
 
 <div id="cheatsheet_parent">
     <label for="cheatsheet_checkbox" id="cheatsheet_checkbox_label">Cheat sheet
-        <input type="checkbox" id="cheatsheet_checkbox" onclick="checkCB('cheatsheet','cheatsheet_checkbox')" unchecked>
+        <input type="checkbox" id="cheatsheet_checkbox" onclick="checkCB('cheatsheet','cheatsheet_checkbox')" autocomplete="off">
     </label>
 <!-- I had to forego indentation here.. -->
 <pre id="cheatsheet">
@@ -80,7 +80,7 @@ locrian    = 1 b2 b3  4 b5 b6 b7
     
 <div id="menu_parent">
     <label for="menu_checkbox" id="menu_checkbox_label">Menu
-        <input type="checkbox" id="menu_checkbox" onclick="checkCB('menu','menu_checkbox')">
+        <input type="checkbox" id="menu_checkbox" onclick="checkCB('menu','menu_checkbox')" autocomplete="off">
     </label>
     <table id="menu" onclick="reset()">
         <tr>
@@ -183,6 +183,13 @@ locrian    = 1 b2 b3  4 b5 b6 b7
                 <input type="checkbox" autocomplete="off" checked value=7 class="mode_cb" id="Locrian"></input>Locrian
             </td>
         </tr>
+        <tr>
+            <td>
+                <button class="toggle_all" onclick="toggleAllKeys()">None / All</button>
+            </td>
+            <td>
+                <button class="toggle_all" onclick="toggleAllModes()">None / All</button>
+            </td>
     </table>
 </div>
 
