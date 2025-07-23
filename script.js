@@ -166,10 +166,10 @@ function question() {
         else if (iName == 2) {
             iName = iName + "nd";
         }
-
+        iName += ":"
         if ((i == 1) || (i == 2) || (i == 5) || (i == 6)) {
             let iProps = ["Dim.", "Minor", "Major", "Aug."];
-            let iPropColours = ["#FCF", "#FCC", "#CFC", "#CFF"];
+            let iPropColours = ["#FBF", "#FBB", "#BFB", "#BFF"];
             let iPropIndex = (modeScale.tones[i].flatSharp) + 2;
             intervalNames[i].textContent = (iProps[iPropIndex]) + " " + iName;
             intervalNames[i].style.color = iPropColours[iPropIndex];
@@ -177,7 +177,7 @@ function question() {
 
         if (i == 3 || i == 4) {
             let iProps = ["Dim.", "Perfect", "Aug."];
-            let iPropColours = ["#FCF", "#FFF", "#CFF"];
+            let iPropColours = ["#FBF", "#FFF", "#BFF"];
             let iPropIndex = (modeScale.tones[i].flatSharp) + 1;
             intervalNames[i].textContent = (iProps[iPropIndex]) + " " + iName;
             intervalNames[i].style.color = iPropColours[iPropIndex];
