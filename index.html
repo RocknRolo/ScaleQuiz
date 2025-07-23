@@ -16,7 +16,7 @@
 
 <div id="scale_input">
     <div id="root">
-        <div class="interval_name">1st:</div>
+        <div class="interval_name">Root:</div>
         <label class="naturals"></label>
     </div>
     <div>
@@ -62,25 +62,9 @@
     <div id="wrong">0</div>
 </div>
 
-<div id="cheatsheet_parent">
-    <label for="cheatsheet_checkbox" id="cheatsheet_checkbox_label">Cheat sheet
-        <input type="checkbox" id="cheatsheet_checkbox" onclick="checkCB('cheatsheet','cheatsheet_checkbox')" autocomplete="off">
-    </label>
-<!-- I had to forego indentation here.. -->
-<pre id="cheatsheet">
-ionian     = 1  2  3  4  5  6  7
-dorian     = 1  2 b3  4  5  6 b7
-phrygian   = 1 b2 b3  4  5 b6 b7
-lydian     = 1  2  3 #4  5  6  7
-mixolydian = 1  2  3  4  5  6 b7
-aeolian    = 1  2 b3  4  5 b6 b7
-locrian    = 1 b2 b3  4 b5 b6 b7
-</pre>
-    </div>
-    
 <div id="menu_parent">
     <label for="menu_checkbox" id="menu_checkbox_label">Menu
-        <input type="checkbox" id="menu_checkbox" onclick="checkCB('menu','menu_checkbox')" autocomplete="off">
+        <input type="checkbox" id="menu_checkbox" onclick="toggleMenu()" autocomplete="off">
     </label>
     <table id="menu" onclick="reset()">
         <tr>
@@ -201,63 +185,3 @@ locrian    = 1 b2 b3  4 b5 b6 b7
 <a href="https://rocknrolo.github.io/">RocknRolo</a>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

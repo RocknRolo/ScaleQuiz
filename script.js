@@ -2,6 +2,7 @@
 
 const options = document.getElementsByClassName("flatsharp_options");
 const scaleNaturals = document.getElementsByClassName("naturals");
+const intervalNames = document.getElementsByClassName("interval_name");
 const scaleName = document.getElementById('scale_name');
 const keyCBs = document.getElementsByClassName('key_cb');
 const modeCBs = document.getElementsByClassName('mode_cb');
@@ -136,6 +137,7 @@ function shuffle(array) {
 let modeNames = ["ionian", "dorian", "phrygian", "lydian", "mixolydian", "aeolian", "locrian"]
 
 let scale;
+let modeScale;
 
 function question() {
     if (qTones.length < 1) {
@@ -147,11 +149,40 @@ function question() {
     let tone = qTones.pop()
     let mode = qModes.pop()
     scale = new Scale(tone, mode);
+    modeScale = new Scale(new Tone("C"), mode);
 
     scaleName.textContent = tone.toString() + " " + modeNames[mode-1];
 
     scaleNaturals[0].textContent = scale.tones[0].toString();
-    for (let i = 1; i < scaleNaturals.length; i++) {
+
+    for (let i = 1; i < intervalNames.length; i++) {
+        let iName = (i + 1);
+        if (iName >= 4) {
+            iName = iName + "th";
+        }
+        else if (iName == 3) {
+            iName = iName + "rd";
+        }
+        else if (iName == 2) {
+            iName = iName + "nd";
+        }
+
+        if ((i == 1) || (i == 2) || (i == 5) || (i == 6)) {
+            let iProps = ["Dim.", "Minor", "Major", "Aug."];
+            let iPropColours = ["#FCF", "#FCC", "#CFC", "#CFF"];
+            let iPropIndex = (modeScale.tones[i].flatSharp) + 2;
+            intervalNames[i].textContent = (iProps[iPropIndex]) + " " + iName;
+            intervalNames[i].style.color = iPropColours[iPropIndex];
+        }
+
+        if (i == 3 || i == 4) {
+            let iProps = ["Dim.", "Perfect", "Aug."];
+            let iPropColours = ["#FCF", "#FFF", "#CFF"];
+            let iPropIndex = (modeScale.tones[i].flatSharp) + 1;
+            intervalNames[i].textContent = (iProps[iPropIndex]) + " " + iName;
+            intervalNames[i].style.color = iPropColours[iPropIndex];
+        }
+
         scaleNaturals[i].textContent = scale.tones[i].natural;
         options[i-1].value = '0';
     }
@@ -207,9 +238,9 @@ for (let i = 0; i < options.length; i++) {
         <option value = -2>bb</option>`
 }
 
-function checkCB(elementStr, checkboxStr) {
-    let el = document.getElementById(elementStr);
-    let cb = document.getElementById(checkboxStr);
+function toggleMenu() {
+    let el = document.getElementById('menu');
+    let cb = document.getElementById('menu_checkbox');
     if (cb.checked) {
         el.style.visibility = "visible";
         el.style.display = "grid";
@@ -237,7 +268,5 @@ function toggleAllModes() {
     allModesChecked = !allModesChecked;
 }
 
-document.getElementById("cheatsheet_checkbox").checked = false
-document.getElementById("menu_checkbox").checked = false
-checkCB('cheatsheet','cheatsheet_checkbox')
-checkCB('menu','menu_checkbox')
+document.getElementById("menu_checkbox").checked = false;
+toggleMenu();
